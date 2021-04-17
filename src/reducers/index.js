@@ -7,7 +7,8 @@ const reducer = (state, action) => {
             const result = action.data.filter(data => data.id <= 5)
             console.log(result)
             console.log(state)
-            return state
+            const array = { ...state, user_data: result }
+            return array
         default:
             return result
     }

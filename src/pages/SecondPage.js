@@ -1,18 +1,17 @@
 import React, { useEffect, useContext } from 'react'
 import { fetchGetData } from '../apis/index'
-import { GETFIVE_DATA } from '../actions/index'
+import { GET_DATA } from '../actions/index'
 import Card from '../components/Card'
 import { Store } from '../store/index'
-import { Link } from 'react-router-dom'
 
 
-const TopPage = () => {
+const SecondPage = () => {
     const { globalState, setGlobalState } = useContext(Store)
 
     useEffect(() => {
         fetchGetData().then(res => {
             setGlobalState({
-                type: GETFIVE_DATA,
+                type: GET_DATA,
                 data: res.data
             })
         })
@@ -22,9 +21,7 @@ const TopPage = () => {
 
     return (
         <div>
-            <h1>TopPage</h1>
-            <Link to="TopPage">TopPage</Link>
-            <Link to="SecondPage">SecondPage</Link>
+            <h1>SecondPage</h1>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {
                     globalState.user_data.length > 0 && globalState.user_data.map((user, index) => {
@@ -38,4 +35,4 @@ const TopPage = () => {
     )
 }
 
-export default TopPage
+export default SecondPage
