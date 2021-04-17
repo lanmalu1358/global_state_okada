@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import { fetchGetData } from '../apis/index'
-import { GET_DATA } from '../actions/index'
+import { GETFIVE_DATA } from '../actions/index'
 import Card from '../components/Card'
 import { Store } from '../store/index'
 
@@ -11,20 +11,22 @@ const TopPage = () => {
     useEffect(() => {
         fetchGetData().then(res => {
             setGlobalState({
-                type: GET_DATA,
+                type: GETFIVE_DATA,
                 data: res.data
             })
         })
     }, [])
+
+    console.log(globalState.user_data)
 
     return (
         <div>
             <h1>TopPage</h1>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {
-                    globalState.user_data.map((user, index) => {
+                    globalState.user_data.length > 0 && globalState.user_data.map((user, index) => {
                         return (
-                            <Card user={user} key={index} />
+                            <Card key={index} />
                         )
                     })
                 }
