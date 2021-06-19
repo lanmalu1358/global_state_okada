@@ -1,15 +1,14 @@
 import React, { useEffect, useContext } from 'react'
-import { fetchGetData } from '../apis/index'
+import { fetchGetTodoData } from '../apis/index'
 import { GET_DATA } from '../actions/index'
-import Card from '../components/Card'
 import { Store } from '../store/index'
-
+import OutlinedCard from '../components/SecondCard'
 
 const SecondPage = () => {
     const { globalState, setGlobalState } = useContext(Store)
 
     useEffect(() => {
-        fetchGetData().then(res => {
+        fetchGetTodoData().then(res => {
             setGlobalState({
                 type: GET_DATA,
                 data: res.data
@@ -24,9 +23,12 @@ const SecondPage = () => {
             <h1>SecondPage</h1>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {
-                    globalState.user_data.length > 0 && globalState.user_data.map((user, index) => {
+                    globalState.comment_data.length > 0 && globalState.comment_data.map((user, index) => {
+                        console.log(user)
                         return (
-                            <Card key={index} user={user} />
+                            <OutlinedCard key={index} user={user} />
+
+                            // <h1>sda</h1>
                         )
                     })
                 }

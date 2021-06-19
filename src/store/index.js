@@ -1,7 +1,8 @@
 import React, { useReducer, createContext } from 'react'
 import reducer from '../reducers/index'
 const initialState = {
-    user_data: []
+    user_data: [],
+    comment_data: []
 }
 
 export const Store = createContext({

@@ -7,3 +7,7 @@ const API = axios.create({
 export const fetchGetData = async () => {
     return await API.get('/users')
 }
+
+export const fetchGetTodoData = async () => {
+    return await API.get('/comments')
+}
